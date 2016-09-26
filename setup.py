@@ -27,8 +27,8 @@ readme = read_md('README.md')
 
 setup(
     name='bottlejwt',
-    version='0.0.2',
-    description='python events non-blocking',
+    version='0.0.3',
+    description='JWT plugin for bottle',
     long_description=readme,
     author='Alberto Galera Jimenez',
     author_email='galerajimenez@gmail.com',
