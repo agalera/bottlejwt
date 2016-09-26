@@ -20,10 +20,10 @@ class JwtPlugin(object):
         self.validation = validation
 
     @classmethod
-    def token_encode(self, data):
+    def encode(self, data):
         return jwt.encode(data, **JwtPlugin.jwt).decode('utf-8')
 
-    def token_decode(self, data):
+    def decode(self, data):
         try:
             return jwt.decode(data, **JwtPlugin.jwt)
         except:
@@ -45,11 +45,11 @@ class JwtPlugin(object):
         token = self.get_token()
         if not token:
             raise HTTPError(403, "Forbidden")
-        token_decoded = self.token_decode(token)
-        if token_decoded is None:
+        decoded = self.decode(token)
+        if decoded is None:
             raise HTTPError(403, "Forbidden, bad token")
-        token_decoded['token'] = token
-        return token_decoded
+        decoded['token'] = token
+        return decoded
 
     def apply(self, callback, route):
         auth_value = route.config.get(self.keyword, None)
@@ -66,3 +66,4 @@ class JwtPlugin(object):
             else:
                 raise HTTPError(401, "Unauthorized")
         return wrapper
+
