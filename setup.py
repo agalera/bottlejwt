@@ -26,19 +26,19 @@ readme = read_md('README.md')
 
 
 setup(
-    name='bottle-jwt',
+    name='bottlejwt',
     version='0.0.1',
     description='python events non-blocking',
     long_description=readme,
     author='Alberto Galera Jimenez',
     author_email='galerajimenez@gmail.com',
-    url='https://github.com/kianxineki/bottle_jwt',
-    py_modules=['bottle_jwt'],
+    url='https://github.com/kianxineki/bottlejwt',
+    py_modules=['bottlejwt'],
     include_package_data=True,
     install_requires=['pyjwt', 'bottle'],
     license="GPL",
     zip_safe=False,
-    keywords='bottle_jwt',
+    keywords='bottlejwt',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Topic :: Software Development :: Libraries :: Python Modules',
