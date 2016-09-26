@@ -1,10 +1,10 @@
-# bottle-jwt
+# bottlejwt
 JWT plugin for bottle
 
 example server:
 ```python
 from bottle import get, install, run
-from bottle_jwt import JwtPlugin
+from bottlejwt import JwtPlugin
 
 def validation(auth, auth_value):
     print(auth, auth_value)
@@ -26,7 +26,7 @@ curl http://localhost:9988/?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ey
 
 Create Token:
 ```python
-from bottle_jwt import JwtPlugin
+from bottlejwt import JwtPlugin
 
 # is a singleton, you only need to initialize once.
 # * If you did install () also work
