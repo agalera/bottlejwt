@@ -27,7 +27,7 @@ readme = read_md('README.md')
 
 setup(
     name='bottlejwt',
-    version='0.0.1',
+    version='0.0.2',
     description='python events non-blocking',
     long_description=readme,
     author='Alberto Galera Jimenez',
