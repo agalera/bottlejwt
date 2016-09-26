@@ -1,5 +1,5 @@
 from bottle import get, install, run
-from bottle_jwt import JwtPlugin
+from bottlejwt import JwtPlugin
 
 def validation(auth, auth_value):
     print(auth, auth_value)
