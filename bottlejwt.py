@@ -11,17 +11,17 @@ class JwtPlugin(object):
 
     def __init__(self, validation, key, algorithm="HS512",
                  headers=None, json_decoder=None):
-        JwtPlugin.jwt = {
-                         'key': key,
+        JwtPlugin.jwt = {'key': key,
                          'algorithm': algorithm,
                          'headers': headers,
-                         'json_decoder': json_decoder
-        }
+                         'json_decoder': json_decoder}
         self.validation = validation
 
     @classmethod
     def encode(self, data):
-        return jwt.encode(data, **JwtPlugin.jwt).decode('utf-8')
+        kwargs = JwtPlugin.jwt.copy()
+        del kwargs['json_decoder']
+        return jwt.encode(data, **kwargs).decode('utf-8')
 
     def decode(self, data):
         try:
@@ -35,7 +35,7 @@ class JwtPlugin(object):
             if token:
                 return token
             _type, token = request.headers['Authorization'].split(" ")
-            if _type != "Bearer":
+            if _type.lower() != "bearer":
                 return None
             return token
         except:
