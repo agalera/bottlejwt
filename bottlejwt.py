@@ -60,10 +60,9 @@ class JwtPlugin(object):
         def wrapper(*args, **kwargs):
             auth = self.get_auth()
             if self.validation(auth, auth_value):
-                if self.keyword in inspect.getargspec(route.callback)[0]:
+                if inspect.signature(route.callback).parameters.get(self.keyword):
                     kwargs['auth'] = auth
                 return route.callback(*args, **kwargs)
             else:
                 raise HTTPError(401, "Unauthorized")
         return wrapper
-
