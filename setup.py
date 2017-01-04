@@ -27,7 +27,7 @@ readme = read_md('README.md')
 
 setup(
     name='bottlejwt',
-    version='0.0.7',
+    version='0.0.8',
     description='JWT plugin for bottle',
     long_description=readme,
     author='Alberto Galera Jimenez',
