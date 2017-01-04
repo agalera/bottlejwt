@@ -61,7 +61,7 @@ class JwtPlugin(object):
             auth = self.get_auth()
             if self.validation(auth, auth_value):
                 if inspect.signature(callback).parameters.get(self.keyword):
-                    kwargs['auth'] = auth
+                    kwargs[keyword] = auth
                 return callback(*args, **kwargs)
             else:
                 raise HTTPError(401, "Unauthorized")
