@@ -23,13 +23,13 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 readme = read_md('README.md')
-
+changelog = read_md('CHANGELOG.md')
 
 setup(
     name='bottlejwt',
-    version='0.0.10',
+    version='0.0.11',
     description='JWT plugin for bottle',
-    long_description=readme,
+    long_description=readme + "\n\n" + changelog,
     author='Alberto Galera Jimenez',
     author_email='galerajimenez@gmail.com',
     url='https://github.com/kianxineki/bottlejwt',
@@ -45,7 +45,11 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Natural Language :: English',
-        'Programming Language :: Python :: 3'
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     entry_points={}
 )
