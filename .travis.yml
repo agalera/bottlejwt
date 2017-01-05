@@ -1,0 +1,21 @@
+language: python
+python:
+  - 2.6
+  - 2.7
+  - 3.2
+  - 3.3
+  - 3.4
+  - 3.5
+  - pypy
+
+install:
+  - pip install codecov
+  - pip install bottle
+  - python${PY:-} setup.py develop
+
+script:
+  - cd test/ && coverage run -a test_bottle_integration.py 
+  - cd test/ && coverage run -a test_create_and_decode_token.py
+
+after_success:
+  - codecov
