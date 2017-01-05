@@ -21,7 +21,7 @@ class JwtPlugin(object):
     def encode(self, data):
         kwargs = JwtPlugin.jwt.copy()
         del kwargs['json_decoder']
-        return jwt.encode(data, **kwargs).decode('utf-8')
+        return jwt.encode(data, **kwargs)
 
     def decode(self, data):
         try:
