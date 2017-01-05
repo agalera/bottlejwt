@@ -15,8 +15,8 @@ install:
   - python${PY:-} setup.py develop
 
 script:
-  - cd test && coverage run -a test_bottle_integration.py 
-  - cd test && coverage run -a test_create_and_decode_token.py
+  - coverage run -a test/test_bottle_integration.py 
+  - coverage run -a test/test_create_and_decode_token.py
 
 after_success:
   - codecov
