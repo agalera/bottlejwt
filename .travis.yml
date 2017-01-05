@@ -9,6 +9,7 @@ python:
   - pypy
 
 install:
+  - pip install webtest
   - pip install codecov
   - pip install bottle
   - python${PY:-} setup.py develop
