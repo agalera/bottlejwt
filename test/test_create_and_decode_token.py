@@ -5,6 +5,7 @@ from bottlejwt import JwtPlugin
 def validation(auth):
     return True
 
+
 class TestMethods(unittest.TestCase):
     def test_create_and_decode_token(self):
         # is a singleton, you only need to initialize once.

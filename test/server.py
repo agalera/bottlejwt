@@ -23,6 +23,7 @@ def yes_auth_no_argument():
 def no_auth():
     return "ok"
 
+
 if __name__ == '__main__':
     # run()
     app[0].run(host="0.0.0.0", port="1234")

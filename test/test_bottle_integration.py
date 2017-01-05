@@ -17,7 +17,6 @@ class TestMethods(unittest.TestCase):
         r = app.get('/authenticate?access_token=%s' % valid_token)
         assert r.status_code == 200
 
-
     def test_authenticate_valid_token_header(self):
         headers1 = {'Authorization': 'bearer %s' % valid_token}
         r1 = app.get('/authenticate', headers=headers1)
@@ -26,7 +25,6 @@ class TestMethods(unittest.TestCase):
         headers2 = {'Authorization': 'Bearer %s' % valid_token}
         r2 = app.get('/authenticate', headers=headers2)
         assert r2.status_code == 200
-
 
     def test_authenticate_valid_token_header_without_type_bearer(self):
         headers = {'Authorization': valid_token}
@@ -50,11 +48,10 @@ class TestMethods(unittest.TestCase):
         r3 = app.get('/authenticate?access_token=%s' % invalid_token_3)
         assert r3.status_code == 403
 
-
     def test_authenticate_valid_token_without_argument(self):
-        r = app.get('/authenticate_without_argument?access_token=%s' % valid_token)
+        r = app.get('/authenticate_without_argument?access_token=%s' %
+                    valid_token)
         assert r.status_code == 200
-
 
     def test_without_authenticate(self):
         r = app.get('/without_authenticate')
