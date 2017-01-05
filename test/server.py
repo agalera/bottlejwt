@@ -26,4 +26,4 @@ def no_auth():
 
 if __name__ == '__main__':
     # run()
-    app[0].run(host="0.0.0.0", port="1234")
+    app[0].run(host="0.0.0.0", port="1234")  # pragma: no cover

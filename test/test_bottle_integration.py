@@ -32,6 +32,11 @@ class TestMethods(unittest.TestCase):
                     expect_errors=True)
         assert r.status_code == 403
 
+        headers = {'Authorization': 'naranjas %s' % valid_token}
+        r = app.get('/authenticate', headers=headers,
+                    expect_errors=True)
+        assert r.status_code == 403
+
     def test_authenticate_no_token(self):
         r = app.get('/authenticate',
                     expect_errors=True)
