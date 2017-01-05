@@ -18,20 +18,20 @@ class TestMethods(unittest.TestCase):
         assert r.status_code == 200
 
 
-#    def test_authenticate_valid_token_header(self):
-#        headers1 = {'Authorization': 'bearer %s' % valid_token}
-#        r1 = app.get('/authenticate', headers1)
-#        assert r1.status_code == 200
-#
-#        headers2 = {'Authorization': 'Bearer %s' % valid_token}
-#        r2 = app.get('/authenticate', headers2)
-#        assert r2.status_code == 200
+    def test_authenticate_valid_token_header(self):
+        headers1 = {'Authorization': 'bearer %s' % valid_token}
+        r1 = app.get('/authenticate', headers=headers1)
+        assert r1.status_code == 200
+
+        headers2 = {'Authorization': 'Bearer %s' % valid_token}
+        r2 = app.get('/authenticate', headers=headers2)
+        assert r2.status_code == 200
 
 
-#    def test_authenticate_valid_token_header_without_type_bearer(self):
-#        headers = {'Authorization': valid_token}
-#        r = app.get('/authenticate', headers)
-#        assert r.status_code == 200
+    def test_authenticate_valid_token_header_without_type_bearer(self):
+        headers = {'Authorization': valid_token}
+        r = app.get('/authenticate', headers=headers)
+        assert r.status_code == 403
 
     def test_authenticate_no_token(self):
         r = app.get('/authenticate')
