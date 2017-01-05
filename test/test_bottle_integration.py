@@ -28,24 +28,29 @@ class TestMethods(unittest.TestCase):
 
     def test_authenticate_valid_token_header_without_type_bearer(self):
         headers = {'Authorization': valid_token}
-        r = app.get('/authenticate', headers=headers)
+        r = app.get('/authenticate', headers=headers,
+                    expect_errors=True)
         assert r.status_code == 403
 
     def test_authenticate_no_token(self):
-        r = app.get('/authenticate')
+        r = app.get('/authenticate',
+                    expect_errors=True)
         assert r.status_code == 403
 
     def test_authenticate_invalid_token(self):
         # validation error (auth != 1)
-        r1 = app.get('/authenticate?access_token=%s' % invalid_token_1)
+        r1 = app.get('/authenticate?access_token=%s' % invalid_token_1,
+                     expect_errors=True)
         assert r1.status_code == 401
 
         # validation error (no content auth)
-        r2 = app.get('/authenticate?access_token=%s' % invalid_token_2)
+        r2 = app.get('/authenticate?access_token=%s' % invalid_token_2,
+                     expect_errors=True)
         assert r2.status_code == 401
 
         # token invalid
-        r3 = app.get('/authenticate?access_token=%s' % invalid_token_3)
+        r3 = app.get('/authenticate?access_token=%s' % invalid_token_3,
+                     expect_errors=True)
         assert r3.status_code == 403
 
     def test_authenticate_valid_token_without_argument(self):
