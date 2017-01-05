@@ -1,3 +1,8 @@
+[![pythonversions](https://img.shields.io/pypi/pyversions/bottlejwt.svg)](https://pypi.python.org/pypi/bottlejwt)
+[![Code Climate](https://img.shields.io/codeclimate/github/kianxineki/bottlejwt.svg)](https://codeclimate.com/github/kianxineki/bottlejwt)
+[![Codecov](https://img.shields.io/codecov/c/github/kianxineki/basicevents.svg)](https://codecov.io/github/kianxineki/bottlejwt)
+[![Travis](https://img.shields.io/travis/kianxineki/bottlejwt.svg)](https://travis-ci.org/kianxineki/bottlejwt)
+
 # bottlejwt
 JWT plugin for bottle
 
