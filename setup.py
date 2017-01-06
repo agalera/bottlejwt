@@ -27,7 +27,7 @@ changelog = read_md('CHANGELOG.md')
 
 setup(
     name='bottlejwt',
-    version='0.0.11',
+    version='0.0.12',
     description='JWT plugin for bottle',
     long_description=readme + "\n\n" + changelog,
     author='Alberto Galera Jimenez',
