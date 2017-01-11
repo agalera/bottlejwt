@@ -1,6 +1,10 @@
 # CHANGELOG
-## 0.0.12 (11-01-2017)
+
+## 0.0.13 (11-01-2017)
 - Fix install package via pip!
+
+## 0.0.12 (06-01-2017)
+- Fix tests to python 2.6
 
 ## 0.0.11 (05-01-2017)
 - Fix compatibility list in pypi

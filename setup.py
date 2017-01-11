@@ -27,7 +27,7 @@ changelog = read_md('CHANGELOG.md')
 
 setup(
     name='bottlejwt',
-    version='0.0.12',
+    version='0.0.13',
     description='JWT plugin for bottle',
     long_description=readme + "\n\n" + changelog,
     author='Alberto Galera Jimenez',
@@ -45,6 +45,7 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Natural Language :: English',
+        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
