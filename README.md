@@ -1,7 +1,7 @@
 [![pythonversions](https://img.shields.io/pypi/pyversions/bottlejwt.svg)](https://pypi.python.org/pypi/bottlejwt)
-[![Code Climate](https://img.shields.io/codeclimate/github/kianxineki/bottlejwt.svg)](https://codeclimate.com/github/kianxineki/bottlejwt)
-[![Codecov](https://img.shields.io/codecov/c/github/kianxineki/bottlejwt.svg)](https://codecov.io/github/kianxineki/bottlejwt)
-[![Travis](https://img.shields.io/travis/kianxineki/bottlejwt.svg)](https://travis-ci.org/kianxineki/bottlejwt)
+[![Code Climate](https://img.shields.io/codeclimate/github/agalera/bottlejwt.svg)](https://codeclimate.com/github/agalera/bottlejwt)
+[![Codecov](https://img.shields.io/codecov/c/github/agalera/bottlejwt.svg)](https://codecov.io/github/agalera/bottlejwt)
+[![Travis](https://img.shields.io/travis/agalera/bottlejwt.svg)](https://travis-ci.org/agalera/bottlejwt)
 
 # bottlejwt
 JWT plugin for bottle
@@ -12,7 +12,7 @@ Via pip:
 ```pip install bottlejwt```
 
 Or clone:
-```git clone https://github.com/kianxineki/bottlejwt.git```
+```git clone https://github.com/agalera/bottlejwt.git```
 
 
 ## example server:

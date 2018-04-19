@@ -32,7 +32,7 @@ setup(
     long_description=readme + "\n\n" + changelog,
     author='Alberto Galera Jimenez',
     author_email='galerajimenez@gmail.com',
-    url='https://github.com/kianxineki/bottlejwt',
+    url='https://github.com/agalera/bottlejwt',
     py_modules=['bottlejwt'],
     include_package_data=True,
     install_requires=['pyjwt', 'bottle'],
