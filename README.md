@@ -1,5 +1,4 @@
 [![pythonversions](https://img.shields.io/pypi/pyversions/bottlejwt.svg)](https://pypi.python.org/pypi/bottlejwt)
-[![Code Climate](https://img.shields.io/codeclimate/github/agalera/bottlejwt.svg)](https://codeclimate.com/github/agalera/bottlejwt)
 [![Codecov](https://img.shields.io/codecov/c/github/agalera/bottlejwt.svg)](https://codecov.io/github/agalera/bottlejwt)
 [![Travis](https://img.shields.io/travis/agalera/bottlejwt.svg)](https://travis-ci.org/agalera/bottlejwt)
 
