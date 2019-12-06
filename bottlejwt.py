@@ -9,12 +9,13 @@ class JwtPlugin(object):
     api = 2
     keyword = 'auth'
 
-    def __init__(self, validation, key, algorithm="HS512",
+    def __init__(self, validation, key, algorithm="HS512", jwt_prefix="Bearer"
                  headers=None, json_decoder=None):
         JwtPlugin.jwt = {'key': key,
                          'algorithm': algorithm,
                          'headers': headers,
                          'json_decoder': json_decoder}
+        self.jwt_prefix = jwt_prefix
         self.validation = validation
 
     @classmethod
@@ -40,7 +41,7 @@ class JwtPlugin(object):
             if token:
                 return token
             _type, token = request.headers['Authorization'].split(" ")
-            if _type.lower() != "bearer":
+            if _type.lower() != self.jwt_prefix:
                 return None
             return token
         except:
