@@ -27,7 +27,7 @@ changelog = read_md('CHANGELOG.md')
 
 setup(
     name='bottlejwt',
-    version='0.0.14',
+    version='0.0.15',
     description='JWT plugin for bottle',
     long_description=readme + "\n\n" + changelog,
     author='Alberto Galera Jimenez',
@@ -35,7 +35,7 @@ setup(
     url='https://github.com/agalera/bottlejwt',
     py_modules=['bottlejwt'],
     include_package_data=True,
-    install_requires=['pyjwt', 'bottle'],
+    install_requires=['pyjwt'],
     license="GPL",
     zip_safe=False,
     keywords='bottlejwt',

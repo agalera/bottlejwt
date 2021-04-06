@@ -1,2 +1,1 @@
-bottle
-pyjwt
+pyjwt==2.0.1
