@@ -22,7 +22,7 @@ class JwtPlugin(object):
             'json_decoder': json_decoder
         }
 
-        self.jwt_prefix = jwt_prefix
+        self.jwt_prefix = jwt_prefix.lower()
         self.validation = validation
 
     @classmethod
@@ -37,7 +37,7 @@ class JwtPlugin(object):
     def decode(self, data):
         try:
             return jwt.decode(data, **JwtPlugin.jwt_decode)
-        except:
+        except Exception as e:
             return None
 
     def get_token(self):
