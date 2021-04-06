@@ -9,20 +9,25 @@ class JwtPlugin(object):
     api = 2
     keyword = 'auth'
 
-    def __init__(self, validation, key, algorithm="HS512", jwt_prefix="Bearer"
-                 headers=None, json_decoder=None):
-        JwtPlugin.jwt = {'key': key,
-                         'algorithm': algorithm,
-                         'headers': headers,
-                         'json_decoder': json_decoder}
+    def __init__(self, validation, key, algorithm="HS512",
+                 headers=None, json_decoder=None, jwt_prefix="Bearer"):
+        JwtPlugin.jwt_encode = {
+            'key': key,
+            'algorithm': algorithm,
+            'headers': headers
+        }
+        JwtPlugin.jwt_decode = {
+            'key': key,
+            'algorithms': [algorithm],
+            'json_decoder': json_decoder
+        }
+
         self.jwt_prefix = jwt_prefix
         self.validation = validation
 
     @classmethod
     def encode(self, data):
-        kwargs = JwtPlugin.jwt.copy()
-        del kwargs['json_decoder']
-        r = jwt.encode(data, **kwargs)
+        r = jwt.encode(data, **JwtPlugin.jwt_encode)
 
         # support python 2.x
         if not isinstance(r, str):
@@ -31,7 +36,7 @@ class JwtPlugin(object):
 
     def decode(self, data):
         try:
-            return jwt.decode(data, **JwtPlugin.jwt)
+            return jwt.decode(data, **JwtPlugin.jwt_decode)
         except:
             return None
 
