@@ -10,7 +10,7 @@ class JwtPlugin(object):
     keyword = 'auth'
 
     def __init__(self, validation, key, algorithm="HS512",
-                 headers=None, json_decoder=None, jwt_prefix="Bearer"):
+                 headers=None, jwt_prefix="Bearer"):
         JwtPlugin.jwt_encode = {
             'key': key,
             'algorithm': algorithm,
@@ -19,7 +19,6 @@ class JwtPlugin(object):
         JwtPlugin.jwt_decode = {
             'key': key,
             'algorithms': [algorithm],
-            'json_decoder': json_decoder
         }
 
         self.jwt_prefix = jwt_prefix.lower()
