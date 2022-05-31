@@ -4,13 +4,7 @@
 import os
 import sys
 
-try:
-    from pypandoc import convert
-    read_md = lambda f: convert(f, 'rst')
-except ImportError:
-    print("warning: pypandoc module not found")
-    read_md = lambda f: open(f, 'r').read()
-
+read_md = lambda f: open(f, 'r', encoding="utf-8").read()
 
 try:
     from setuptools import setup
@@ -23,13 +17,13 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 readme = read_md('README.md')
-changelog = read_md('CHANGELOG.md')
 
 setup(
     name='bottlejwt',
-    version='1.0.0',
+    version='1.0.1',
     description='JWT plugin for bottle',
-    long_description=readme + "\n\n" + changelog,
+    long_description=readme,
+    long_description_content_type="text/markdown",
     author='Alberto Galera Jimenez',
     author_email='galerajimenez@gmail.com',
     url='https://github.com/agalera/bottlejwt',
