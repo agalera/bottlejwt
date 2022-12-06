@@ -16,27 +16,107 @@ Or clone:
 
 ## example server:
 ```python
-from bottle import get, install, run
+import time
+
 from bottlejwt import JwtPlugin
+from bottle import Bottle, request
+
+
+permissions = {"user": 0, "service": 1, "admin": 2}
+jwt_secret_key = "s3cr3tk3y!!ch@ng3m3"
 
 def validation(auth, auth_value):
-    print(auth, auth_value)
-    return True
+    return permissions[auth["type"]] >= permissions[auth_value]
 
-@get("/", auth="any values and types")
-def example(auth):  # auth argument is optional!
-    return "ok"
+app = Bottle()
+app.install(JwtPlugin(validation, jwt_secret_key, algorithm="HS512"))
 
+@app.post("/login")
+def login():
+    """
+    receive:
+    {'client_id': 'user',
+     'client_secret': 'password'
+    }
 
-install(JwtPlugin(validation, 'secret', algorithm='HS256'))
-run(host="0.0.0.0", port="9988")
+    response:
+    {'access_token': 'token',
+     'type': 'bearer'}
+
+    """
+    # example for mongodb
+    '''
+    user = db.users.find_one(
+        {
+            "client_id": request.json["client_id"],
+            "client_secret": hash_password(request.json["client_secret"]),
+        },
+        {"_id": False, "client_secret": False},
+    )
+    '''
+    # Any data we consider good, implement a logic instead of doing this
+    user = {
+        "client_id": request.json["client_id"],
+        "type": "user"
+    }
+    if not user:
+        raise HTTPError(403, "Invalid user or password")
+    user["exp"] = time.time() + 86400  # 1 day
+    return {"access_token": JwtPlugin.encode(user), "type": "bearer"}
+
+@app.get('/jwt_info', auth='user')
+def jwt_info(auth):
+    return auth
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=9999)
 ```
 
-## Test:
+## Test by curl:
 ```bash
 curl http://localhost:9988/?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ```
+## Example client:
+```python
+import requests
 
+response = requests.post(
+    'http://localhost:9999/login',
+    json={
+        'client_id': 'user',
+        'client_secret': 'password'
+    }
+).json()
+
+token = f"{response['type']} {response['access_token']}"
+
+# option 1 - Headers
+requests.get(
+    'http://localhost:9999/jwt_info',
+    headers={'Authorization': token}
+)
+# response
+'''
+{'client_id': 'user',
+ 'type': 'user',
+ 'exp': 1670421559.047136,
+ 'token': '...'
+}
+'''
+
+# option 2 - url argument
+requests.get(
+    f'http://localhost:9999/jwt_info?access_token={response["access_token"]}',
+)
+
+'''
+{'client_id': 'user',
+ 'type': 'user',
+ 'exp': 1670421559.047136,
+ 'token': '...'
+}
+'''
+```
 ## Create Token:
 ```python
 from bottlejwt import JwtPlugin
