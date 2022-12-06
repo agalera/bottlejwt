@@ -109,6 +109,7 @@ requests.get(
     f'http://localhost:9999/jwt_info?access_token={response["access_token"]}',
 )
 
+# response
 '''
 {'client_id': 'user',
  'type': 'user',
