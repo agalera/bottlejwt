@@ -11,7 +11,6 @@ def validation(auth, auth_value):
     return permissions[auth["type"]] >= permissions[auth_value]
 
 app = Bottle()
-app.install(JwtPlugin(validation, jwt_secret_key, algorithm="HS512"))
 
 @app.post("/login")
 def login():
@@ -49,6 +48,8 @@ def login():
 @app.get('/jwt_info', auth='user')
 def jwt_info(auth):
     return auth
+
+app.install(JwtPlugin(validation, jwt_secret_key, algorithm="HS512"))
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=9999)
