@@ -70,8 +70,8 @@ class JwtPlugin(object):
         def wrapper(*args, **kwargs):
             auth = self.get_auth()
             if self.validation(auth, auth_value):
-                sig = inspect.getargspec(callback)
-                if self.keyword in sig.args:
+                sig = inspect.signature(callback)
+                if self.keyword in sig.parameters:
                     kwargs[self.keyword] = auth
                 return callback(*args, **kwargs)
             else:

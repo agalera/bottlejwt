@@ -20,7 +20,7 @@ readme = read_md('README.md')
 
 setup(
     name='bottlejwt',
-    version='1.0.1',
+    version='1.0.2',
     description='JWT plugin for bottle',
     long_description=readme,
     long_description_content_type="text/markdown",
@@ -29,7 +29,7 @@ setup(
     url='https://github.com/agalera/bottlejwt',
     py_modules=['bottlejwt'],
     include_package_data=True,
-    install_requires=['pyjwt==2.4.0'],
+    install_requires=['pyjwt==2.8.0'],
     license="GPL",
     zip_safe=False,
     keywords='bottlejwt',
@@ -49,6 +49,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
     ],
     entry_points={}
 )
