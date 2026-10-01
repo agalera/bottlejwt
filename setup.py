@@ -29,7 +29,7 @@ setup(
     url='https://github.com/agalera/bottlejwt',
     py_modules=['bottlejwt'],
     include_package_data=True,
-    install_requires=['pyjwt==2.12.0'],
+    install_requires=['pyjwt==2.15.0'],
     license="GPL",
     zip_safe=False,
     keywords='bottlejwt',
